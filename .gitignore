@@ -1,0 +1,11 @@
+.DS_STORE
+
+/dist/
+/node_modules/
+/.idea/
+/.vscode/
+/.codesandbox/
+
+
+.idea/
+.vscode/
