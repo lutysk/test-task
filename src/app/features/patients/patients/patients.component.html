@@ -5,6 +5,10 @@
       <a mat-raised-button class="actions-main" color="primary">
         {{ 'stms.patients.get-patients' | translate }}
       </a>
+      <div *ngFor="let patient of patientsList$ | async">
+        <p>{{patient.fullName}} - {{patient.birthDate.formattedDate | date}}</p>
+        <br>
+      </div>
       <!--
         Endpoint to fetch data: https://api.mocki.io/v2/51597ef3
        -->

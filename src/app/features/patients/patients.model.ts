@@ -1,7 +1,7 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
 import { Patient } from "../../shared/models/patient.model";
 
-export interface PatientListResponse {
+export interface PatientsListResponse {
     count: number;
     patient: Patient[];
     undisplayedMatches: boolean;

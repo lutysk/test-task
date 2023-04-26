@@ -5,9 +5,21 @@ import { SharedModule } from "../../shared/shared.module";
 
 import { OrdersComponent } from "./orders/orders.component";
 import { OrdersRoutingModule } from "./orders-routing.module";
+import { StoreModule } from "@ngrx/store";
+import { ordersFeatureKey } from "./orders.model";
+import { ordersReducer } from "./orders.reducer";
+import { EffectsModule } from "@ngrx/effects";
+import { OrdersEffects } from "./orders.effects";
 
 @NgModule({
-  declarations: [OrdersComponent],
-  imports: [CommonModule, SharedModule, OrdersRoutingModule]
+    declarations: [OrdersComponent],
+    imports: [
+        CommonModule,
+        SharedModule,
+        OrdersRoutingModule,
+        StoreModule.forFeature(ordersFeatureKey, ordersReducer),
+        EffectsModule.forFeature([OrdersEffects])
+    ]
 })
-export class OrdersModule {}
+export class OrdersModule {
+}

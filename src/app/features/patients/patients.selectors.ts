@@ -3,9 +3,9 @@ import { patientsEntityAdapter, patientsFeatureKey, PatientsState } from "./pati
 
 const { selectAll } = patientsEntityAdapter.getSelectors();
 
-export const selectPatientState = createFeatureSelector<PatientsState>(patientsFeatureKey);
+export const selectPatientsState = createFeatureSelector<PatientsState>(patientsFeatureKey);
 
 export const selectAllPatients = createSelector(
-    selectPatientState,
+    selectPatientsState,
     selectAll
 );

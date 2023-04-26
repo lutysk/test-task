@@ -11,7 +11,6 @@ const reducer = createReducer(
         return patientsEntityAdapter.setAll(patients, state);
     }));
 
-export function patientsReducer(state: PatientsState | undefined,
-    action: Action) {
+export function patientsReducer(state: PatientsState | undefined, action: Action) {
     return reducer(state, action);
 }

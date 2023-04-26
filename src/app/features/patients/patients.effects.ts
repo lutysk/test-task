@@ -13,6 +13,7 @@ export class PatientsEffects {
             .pipe(
                 map((patients) => patientsActions.getAllPatientsSuccess({ patients })),
                 catchError(err => of(patientsActions.getAllPatientsFail()))
+                // TODO: check error handling
             ))
     ))
 
