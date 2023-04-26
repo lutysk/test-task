@@ -5,10 +5,22 @@ import { SharedModule } from "../../shared/shared.module";
 
 import { PatientsRoutingModule } from "./patients-routing.module";
 import { PatientsComponent } from "./patients/patients.component";
+import { StoreModule } from "@ngrx/store";
+import { patientsFeatureKey } from "./patients.model";
+import { patientsReducer } from "./patients.reducer";
+import { EffectsModule } from "@ngrx/effects";
+import { PatientsEffects } from "./patients.effects";
 
 @NgModule({
-  declarations: [PatientsComponent],
-  imports: [CommonModule, SharedModule, PatientsRoutingModule],
-  providers: []
+    declarations: [PatientsComponent],
+    imports: [
+        CommonModule,
+        SharedModule,
+        PatientsRoutingModule,
+        StoreModule.forFeature(patientsFeatureKey, patientsReducer),
+        EffectsModule.forFeature([PatientsEffects])
+    ],
+    providers: []
 })
-export class PatientsModule {}
+export class PatientsModule {
+}

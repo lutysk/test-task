@@ -7,7 +7,10 @@ export interface Patient {
   attachments?: any[];
   availablePriorities?: any[];
   biohazard?: boolean;
-  birthDate?: any;
+  birthDate?: {
+    dateTime: string;
+    formattedDate: string;
+  };
   birthYear?: number;
   chronicDiagnosis?: any[];
   code?: number;
