@@ -6,5 +6,3 @@ export const getAllOrdersSuccess = createAction('[Orders page]: Get all orders s
     orders: DisplayOrder[]
 }>());
 export const getAllOrdersFail = createAction('[Orders page]: Get all orders fail');
-
-export const clearAllOrders = createAction('[Orders page: Clear all orders');

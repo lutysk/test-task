@@ -82,7 +82,7 @@ import { TableFavoriteColumnComponent } from './components/table-favorite-column
     BigInputComponent,
     BigInputActionComponent,
     RtlSupportDirective,
-    TableFavoriteColumnComponent
+    TableFavoriteColumnComponent,
   ],
   exports: [
     CommonModule,

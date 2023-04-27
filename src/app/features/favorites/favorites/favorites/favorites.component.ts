@@ -33,6 +33,7 @@ export class FavoritesComponent {
   };
   rowData$: Observable<DisplayPatient[]> = this.store.select(selectAllFavorites);
   context: any;
+  gridApi: any;
 
   constructor(private store: Store) {
     this.context = { componentParent: this };
@@ -40,5 +41,10 @@ export class FavoritesComponent {
 
   toggleFavorite(id: number, isFavorite: boolean): void {
     this.store.dispatch(removeFromFavorite({id}));
+  }
+
+  onGridReady(params): void {
+    this.gridApi = params.api;
+    this.gridApi.sizeColumnsToFit();
   }
 }

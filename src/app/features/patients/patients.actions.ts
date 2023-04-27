@@ -11,5 +11,6 @@ export const getAllPatientsFail = createAction('[Patients page]: Get all patient
 export const togglePatientIsFavorite = createAction('[Patients page]: Toggle patient favorite state', props<{
     update: Update<DisplayPatient>
 }>());
-
-export const clearAllPatients = createAction('[Patients page]: Clear all patience');
+export const removePatientIsFavorite = createAction('[Patients page]: Remove patient favorite state', props<{
+    update: Update<DisplayPatient>
+}>());

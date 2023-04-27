@@ -10,7 +10,6 @@ const reducer = createReducer(
         { orders }) => {
         return ordersEntityAdapter.setAll(orders, state);
     }),
-    on(ordersActions.clearAllOrders, (state) => ordersEntityAdapter.removeAll(state)),
 );
 
 export function ordersReducer(state: OrdersState | undefined, action: Action) {

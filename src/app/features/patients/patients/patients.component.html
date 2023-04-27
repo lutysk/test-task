@@ -1,20 +1,25 @@
-<div class="container">
-  <div rtl>
-    <h1 class="main-heading">{{ 'stms.patients.title' | translate }}</h1>
-    <div class="actions">
-      <a mat-raised-button class="actions-main" color="primary" (click)="getPatientsList()">
-        {{ 'stms.patients.get-patients' | translate }}
-      </a>
+<div class="container" rtl>
+  <div class="row">
+    <div class="col">
+      <h1 class="main-heading mt-2">{{ 'stms.patients.title' | translate }}</h1>
+      <div class="actions my-4">
+        <a mat-raised-button class="actions-main" color="primary" (click)="getPatientsList()">
+          {{ 'stms.patients.get-patients' | translate }}
+        </a>
+      </div>
     </div>
-    <div style="height: 500px; width: 1000px">
+  </div>
+  <div class="row align-items-center" [ngClass]="routeAnimationsElements">
+    <div class="col">
       <ag-grid-angular
+              class="ag-theme-material data-grid"
               [columnDefs]="columnDefs"
               [defaultColDef]="defaultColDef"
               [rowData]="rowData$ | async"
               [animateRows]="true"
               [context]="context"
-              style="width: 100%; height: 100%"
-              class="ag-theme-alpine">
+              (gridReady)="onGridReady($event)"
+              >
       </ag-grid-angular>
     </div>
   </div>

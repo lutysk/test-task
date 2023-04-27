@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 
 import { ROUTE_ANIMATIONS_ELEMENTS } from "../../../core/core.module";
 import { Observable } from "rxjs";
@@ -6,7 +6,7 @@ import { Store } from "@ngrx/store";
 import { selectAllOrders } from "../orders.selectors";
 import { ColDef } from "ag-grid-community";
 import { DisplayOrder } from "../orders.model";
-import { clearAllOrders, getAllOrders } from "../orders.actions";
+import { getAllOrders } from "../orders.actions";
 
 @Component({
   selector: "st-orders",
@@ -14,7 +14,7 @@ import { clearAllOrders, getAllOrders } from "../orders.actions";
   styleUrls: ["./orders.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OrdersComponent implements OnDestroy {
+export class OrdersComponent {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   columnDefs: ColDef[] = [
     { field: 'id', headerName: 'Identification number' },
@@ -27,6 +27,7 @@ export class OrdersComponent implements OnDestroy {
   };
   rowData$: Observable<DisplayOrder[]> = this.store.select(selectAllOrders);
   context: any;
+  gridApi: any;
 
   constructor(private store: Store) {}
 
@@ -34,7 +35,8 @@ export class OrdersComponent implements OnDestroy {
     this.store.dispatch(getAllOrders());
   }
 
-  ngOnDestroy(): void {
-    this.store.dispatch(clearAllOrders());
+  onGridReady(params): void {
+    this.gridApi = params.api;
+    this.gridApi.sizeColumnsToFit();
   }
 }

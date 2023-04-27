@@ -7,8 +7,8 @@ export const initialState: PatientsState = patientsEntityAdapter.getInitialState
 const reducer = createReducer(
     initialState,
     on(patientsActions.getAllPatientsSuccess, (state, { patients }) => patientsEntityAdapter.setAll(patients, state)),
-    on(patientsActions.togglePatientIsFavorite, (state, { update }) => patientsEntityAdapter.updateOne(update, state)),
-    on(patientsActions.clearAllPatients, (state) => patientsEntityAdapter.removeAll(state))
+    on(patientsActions.togglePatientIsFavorite, patientsActions.removePatientIsFavorite, (state,
+        { update }) => patientsEntityAdapter.updateOne(update, state)),
 );
 
 export function patientsReducer(state: PatientsState | undefined, action: Action) {
