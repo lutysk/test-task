@@ -5,5 +5,8 @@
   "container": {
     "port": 42000,
     "node": "14"
+  },
+  "devServer": {
+    "disableHostCheck": true
   }
 }
