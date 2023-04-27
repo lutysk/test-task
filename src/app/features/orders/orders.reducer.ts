@@ -9,7 +9,9 @@ const reducer = createReducer(
     on(ordersActions.getAllOrdersSuccess, (state,
         { orders }) => {
         return ordersEntityAdapter.setAll(orders, state);
-    }));
+    }),
+    on(ordersActions.clearAllOrders, (state) => ordersEntityAdapter.removeAll(state)),
+);
 
 export function ordersReducer(state: OrdersState | undefined, action: Action) {
     return reducer(state, action);

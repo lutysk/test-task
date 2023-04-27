@@ -10,6 +10,7 @@ import { ordersFeatureKey } from "./orders.model";
 import { ordersReducer } from "./orders.reducer";
 import { EffectsModule } from "@ngrx/effects";
 import { OrdersEffects } from "./orders.effects";
+import { AgGridModule } from "ag-grid-angular";
 
 @NgModule({
     declarations: [OrdersComponent],
@@ -18,7 +19,8 @@ import { OrdersEffects } from "./orders.effects";
         SharedModule,
         OrdersRoutingModule,
         StoreModule.forFeature(ordersFeatureKey, ordersReducer),
-        EffectsModule.forFeature([OrdersEffects])
+        EffectsModule.forFeature([OrdersEffects]),
+        AgGridModule
     ]
 })
 export class OrdersModule {

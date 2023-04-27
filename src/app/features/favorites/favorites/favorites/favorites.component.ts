@@ -19,7 +19,7 @@ import { removeFromFavorite } from "../../favorites.actions";
 export class FavoritesComponent {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   columnDefs: ColDef[] = [
-    { field: 'firstName', headerName: 'First name', filter: true },
+    { field: 'firstName', headerName: 'First name', filter: true, floatingFilter: true },
     { field: 'lastName', headerName: 'Last name' },
     { field: 'age', headerName: 'Age' },
     { field: 'sex', headerName: 'Sex' },

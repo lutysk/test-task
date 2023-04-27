@@ -4,6 +4,7 @@ import * as ordersActions from './orders.actions';
 import { catchError, exhaustMap, map } from "rxjs/operators";
 import { of } from "rxjs";
 import { OrdersService } from "./orders.service";
+import { DisplayOrder } from "./orders.model";
 
 @Injectable()
 export class OrdersEffects {
@@ -11,9 +12,8 @@ export class OrdersEffects {
         ofType(ordersActions.getAllOrders),
         exhaustMap(() => this.ordersService.getAllOrders()
             .pipe(
-                map((orders) => ordersActions.getAllOrdersSuccess({ orders })),
-                catchError(err => of(ordersActions.getAllOrdersFail()))
-                // TODO: check error handling
+                map((res) => ordersActions.getAllOrdersSuccess({ orders: res.map(order => new DisplayOrder(order)) })),
+                catchError(() => of(ordersActions.getAllOrdersFail()))
             ))
     ))
 

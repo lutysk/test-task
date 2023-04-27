@@ -10,14 +10,28 @@ export interface OrdersListResponse {
 
 export const ordersFeatureKey = 'orders';
 
-export interface OrdersState extends EntityState<Order> {
+export interface OrdersState extends EntityState<DisplayOrder> {
 }
 
-export function selectOrdersId(a: Order): number {
-    return a.orderNum;
+export function selectOrdersId(a: DisplayOrder): number {
+    return a.id;
 }
 
-export const ordersEntityAdapter: EntityAdapter<Order> = createEntityAdapter<Order>({
+export class DisplayOrder {
+    id: number;
+    status: string;
+    orderName: string;
+    creationDate: Date | string;
+
+    constructor(order: Order) {
+        this.id = order.orderNum;
+        this.status = order.status.name;
+        this.orderName = order.orderName;
+        this.creationDate = new Date(order.creationDate.formattedDate).toLocaleDateString() || 'Unknown'
+    }
+}
+
+export const ordersEntityAdapter: EntityAdapter<DisplayOrder> = createEntityAdapter<DisplayOrder>({
     selectId: selectOrdersId,
     sortComparer: false,
 });

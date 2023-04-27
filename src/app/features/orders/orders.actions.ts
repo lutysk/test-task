@@ -1,8 +1,10 @@
 import { createAction, props } from "@ngrx/store";
-import { Order } from "../../shared/models/order.model";
+import { DisplayOrder } from "./orders.model";
 
 export const getAllOrders = createAction('[Orders page]: Get all orders');
 export const getAllOrdersSuccess = createAction('[Orders page]: Get all orders success', props<{
-    orders: Order[]
+    orders: DisplayOrder[]
 }>());
 export const getAllOrdersFail = createAction('[Orders page]: Get all orders fail');
+
+export const clearAllOrders = createAction('[Orders page: Clear all orders');

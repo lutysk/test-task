@@ -20,7 +20,7 @@ import {
 export class PatientsComponent implements OnDestroy {
     routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
     columnDefs: ColDef[] = [
-        { field: 'firstName', headerName: 'First name' },
+        { field: 'firstName', headerName: 'First name', filter: true },
         { field: 'lastName', headerName: 'Last name' },
         { field: 'age', headerName: 'Age' },
         { field: 'sex', headerName: 'Sex' },
@@ -30,7 +30,6 @@ export class PatientsComponent implements OnDestroy {
     ];
     defaultColDef: ColDef = {
         sortable: true,
-        filter: true,
     };
     rowData$: Observable<DisplayPatient[]> = this.store.select(selectAllPatients);
     context: any;

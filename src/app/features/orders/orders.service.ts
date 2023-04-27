@@ -17,8 +17,7 @@ export class OrdersService {
     return this.http.get<OrdersListResponse>('https://api.mocki.io/v2/79fb05cb')
         .pipe(
             map(res => res.order),
-            catchError(err => of(err))
+            catchError(() => of([]))
         );
-    // TODO: check how errors are handled
   }
 }

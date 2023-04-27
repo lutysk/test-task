@@ -3,12 +3,13 @@ import { Actions, concatLatestFrom, createEffect, ofType } from "@ngrx/effects";
 import { PatientsService } from "./patients.service";
 import * as patientsActions from './patients.actions';
 import { catchError, exhaustMap, map, withLatestFrom } from "rxjs/operators";
-import { EMPTY, of } from "rxjs";
+import { of } from "rxjs";
 import { addToFavorite, removeFromFavorite } from "../favorites/favorites.actions";
 import { selectPatientById } from "./patients.selectors";
 import { Store } from "@ngrx/store";
 import { selectAllEntities } from "../favorites/favorites.selectors";
 import { DisplayPatient } from "./patients.model";
+import { getAllPatientsFail } from "./patients.actions";
 
 @Injectable()
 export class PatientsEffects {
@@ -22,7 +23,7 @@ export class PatientsEffects {
                         { patients: res.map(patient => new DisplayPatient(patient, !!favorites[patient.code])) }
                     )
                 }),
-                catchError(() => EMPTY))
+                catchError(() => of(getAllPatientsFail())))
             ))
     );
 
