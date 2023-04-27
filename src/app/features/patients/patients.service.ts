@@ -9,7 +9,6 @@ import { PatientsListResponse } from "./patients.model";
     providedIn: "root"
 })
 export class PatientsService {
-
     constructor(private http: HttpClient) {
     }
 
@@ -17,8 +16,7 @@ export class PatientsService {
         return this.http.get<PatientsListResponse>('https://api.mocki.io/v2/51597ef3')
             .pipe(
                 map(res => res.patient),
-                catchError(err => of(err))
+                catchError(() => of([]))
             );
-        // TODO: check how errors are handled
     }
 }

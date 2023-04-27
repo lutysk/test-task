@@ -16,6 +16,9 @@
 @import './app/shared/components/big-input/big-input/big-input.component.scss-theme';
 @import './app/features/patients/patients/patients.component.scss-theme';
 
+@import 'ag-grid-community/dist/styles/ag-grid.css';
+@import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+
 @include mat-core();
 
 @mixin custom-components-theme($theme) {

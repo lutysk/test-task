@@ -2,16 +2,20 @@
   <div rtl>
     <h1 class="main-heading">{{ 'stms.patients.title' | translate }}</h1>
     <div class="actions">
-      <a mat-raised-button class="actions-main" color="primary">
+      <a mat-raised-button class="actions-main" color="primary" (click)="getPatientsList()">
         {{ 'stms.patients.get-patients' | translate }}
       </a>
-      <div *ngFor="let patient of patientsList$ | async">
-        <p>{{patient.fullName}} - {{patient.birthDate.formattedDate | date}}</p>
-        <br>
-      </div>
-      <!--
-        Endpoint to fetch data: https://api.mocki.io/v2/51597ef3
-       -->
+    </div>
+    <div style="height: 500px; width: 1000px">
+      <ag-grid-angular
+              [columnDefs]="columnDefs"
+              [defaultColDef]="defaultColDef"
+              [rowData]="rowData$ | async"
+              [animateRows]="true"
+              [context]="context"
+              style="width: 100%; height: 100%"
+              class="ag-theme-alpine">
+      </ag-grid-angular>
     </div>
   </div>
 </div>

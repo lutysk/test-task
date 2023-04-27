@@ -43,13 +43,15 @@ import {
   faLightbulb,
   faWindowMaximize,
   faStream,
-  faBook
+  faBook,
+  faHeart, faHeartBroken
 } from "@fortawesome/free-solid-svg-icons";
 import { faMediumM, faGithub } from "@fortawesome/free-brands-svg-icons";
 
 import { BigInputComponent } from "./components/big-input/big-input/big-input.component";
 import { BigInputActionComponent } from "./components/big-input/big-input-action/big-input-action.component";
 import { RtlSupportDirective } from "./directives/rtl-support/rtl-support.directive";
+import { TableFavoriteColumnComponent } from './components/table-favorite-column/table-favorite-column.component';
 
 @NgModule({
   imports: [
@@ -79,7 +81,8 @@ import { RtlSupportDirective } from "./directives/rtl-support/rtl-support.direct
   declarations: [
     BigInputComponent,
     BigInputActionComponent,
-    RtlSupportDirective
+    RtlSupportDirective,
+    TableFavoriteColumnComponent
   ],
   exports: [
     CommonModule,
@@ -135,7 +138,9 @@ export class SharedModule {
       faLightbulb,
       faWindowMaximize,
       faStream,
-      faBook
+      faBook,
+      faHeart,
+      faHeartBroken
     );
   }
 }

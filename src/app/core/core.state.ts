@@ -14,11 +14,14 @@ import { authReducer } from './auth/auth.reducer';
 import { RouterStateUrl } from './router/router.state';
 import { settingsReducer } from './settings/settings.reducer';
 import { SettingsState } from './settings/settings.model';
+import { favoritesFeatureKey, FavoritesState } from "../features/favorites/favorites.model";
+import { favoritesReducer } from "../features/favorites/favorites.reducer";
 
 export const reducers: ActionReducerMap<AppState> = {
   auth: authReducer,
   settings: settingsReducer,
-  router: routerReducer
+  router: routerReducer,
+  [favoritesFeatureKey]: favoritesReducer
 };
 
 export const metaReducers: MetaReducer<AppState>[] = [
@@ -49,4 +52,5 @@ export interface AppState {
   auth: AuthState;
   settings: SettingsState;
   router: RouterReducerState<RouterStateUrl>;
+  [favoritesFeatureKey]: FavoritesState;
 }

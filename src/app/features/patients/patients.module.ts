@@ -10,6 +10,7 @@ import { patientsFeatureKey } from "./patients.model";
 import { patientsReducer } from "./patients.reducer";
 import { EffectsModule } from "@ngrx/effects";
 import { PatientsEffects } from "./patients.effects";
+import { AgGridModule } from "ag-grid-angular";
 
 @NgModule({
     declarations: [PatientsComponent],
@@ -17,6 +18,7 @@ import { PatientsEffects } from "./patients.effects";
         CommonModule,
         SharedModule,
         PatientsRoutingModule,
+        AgGridModule,
         StoreModule.forFeature(patientsFeatureKey, patientsReducer),
         EffectsModule.forFeature([PatientsEffects])
     ],
